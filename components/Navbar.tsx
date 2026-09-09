@@ -123,7 +123,7 @@ export default function Navbar() {
             href="tel:+16045551234"
             className="text-sm font-medium text-navy/70 hover:text-accent"
           >
-            (604) 555-1234
+            (604) 599-4888
           </a>
           <button
             type="button"

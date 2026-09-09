@@ -50,7 +50,7 @@ export default function AboutPage() {
               </p>
               <div className="mt-4 space-y-1 text-sm text-navy/60">
                 <a href="tel:+16045551234" className="block hover:text-accent">
-                  (604) 555-1234
+                  (604) 599-4888
                 </a>
                 <a
                   href="mailto:sunny.chadha@century21.ca"

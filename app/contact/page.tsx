@@ -30,7 +30,7 @@ export default function ContactPage() {
               <div>
                 <p className="font-semibold text-navy">Phone</p>
                 <a href="tel:+16045551234" className="text-navy/60 hover:text-accent">
-                  (604) 555-1234
+                  (604) 599-4888
                 </a>
               </div>
               <div>

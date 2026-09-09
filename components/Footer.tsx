@@ -87,7 +87,7 @@ export default function Footer() {
           <ul className="mt-4 space-y-2 text-sm text-white/70">
             <li>
               <a href="tel:+16045551234" className="hover:text-gold">
-                (604) 555-1234
+                (604) 599-4888
               </a>
             </li>
             <li>

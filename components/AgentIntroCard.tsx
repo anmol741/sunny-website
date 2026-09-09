@@ -22,7 +22,7 @@ export default function AgentIntroCard() {
         </p>
         <div className="mt-4 flex flex-col gap-1 text-sm text-navy/70 sm:flex-row sm:gap-6">
           <a href="tel:+16045551234" className="hover:text-accent">
-            (604) 555-1234
+            (604) 599-4888
           </a>
           <a
             href="mailto:sunny.chadha@century21.ca"
