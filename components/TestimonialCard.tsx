@@ -15,7 +15,7 @@ export default function TestimonialCard({ t }: { t: Testimonial }) {
       </p>
       <div className="mt-5 border-t border-navy/10 pt-4">
         <p className="text-sm font-semibold text-navy">{t.name}</p>
-        <p className="text-xs text-navy/50">{t.location}</p>
+        <p className="text-xs text-navy/50">{t.source}</p>
       </div>
     </div>
   );

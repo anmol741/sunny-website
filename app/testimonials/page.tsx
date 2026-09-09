@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Container from "@/components/Container";
 import SectionReveal from "@/components/SectionReveal";
 import TestimonialCard from "@/components/TestimonialCard";
 import CTAButton from "@/components/CTAButton";
 import { testimonials } from "@/data/testimonials";
+
+const GOOGLE_REVIEWS_URL = "https://maps.app.goo.gl/sxxTHyhpYRRkWc9UA?g_st=iwb";
 
 export const metadata: Metadata = {
   title: "Testimonials | Sunny Chadha, REALTOR®",
@@ -16,9 +19,18 @@ export default function TestimonialsPage() {
     <div className="py-16">
       <Container>
         <SectionReveal className="max-w-2xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent">
-            Testimonials
-          </p>
+          <div className="flex items-center gap-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent">
+              Testimonials
+            </p>
+            <Image
+              src="/logo.jpeg"
+              alt="Sunny Chadha credential badge"
+              width={88}
+              height={88}
+              className="h-20 w-20 rounded-full object-cover"
+            />
+          </div>
           <h1 className="mt-2 font-serif text-4xl text-navy">
             What Clients Say
           </h1>
@@ -40,6 +52,14 @@ export default function TestimonialsPage() {
           <p className="font-serif text-2xl text-navy">
             Ready to write your own story?
           </p>
+          <a
+            href={GOOGLE_REVIEWS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 inline-block text-sm font-medium text-accent hover:underline"
+          >
+            Read more reviews on Google
+          </a>
           <div className="mt-6">
             <CTAButton href="/contact">Get in Touch</CTAButton>
           </div>

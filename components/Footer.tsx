@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 /**
@@ -102,9 +103,15 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Sunny Chadha, REALTOR®. Not
             intended to solicit properties currently listed for sale.
           </p>
-          <p>
-            {/* TODO(CJ): insert Century 21 Coastal Realty Ltd. brokerage
-            logo + full disclosure block here per board requirements. */}
+          <p className="flex items-center justify-center gap-2">
+            {/* TODO(CJ): confirm full disclosure block here per board requirements. */}
+            <Image
+              src="/logo.jpeg"
+              alt="Sunny Chadha credential badge"
+              width={30}
+              height={30}
+              className="h-[30px] w-[30px] rounded-full object-cover"
+            />
             Independently owned website. Brokerage: Century 21 Coastal Realty
             Ltd.
           </p>

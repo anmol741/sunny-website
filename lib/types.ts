@@ -24,7 +24,7 @@ export type Listing = {
 export type Testimonial = {
   id: string;
   name: string;
-  location: string;
+  source: string;
   quote: string;
   rating: number;
 };

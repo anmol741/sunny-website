@@ -3,42 +3,50 @@ import type { Testimonial } from "@/lib/types";
 export const testimonials: Testimonial[] = [
   {
     id: "t1",
-    name: "Karen & Michael D.",
-    location: "West Vancouver",
+    name: "Jatinder Singh",
+    source: "Google Review",
     quote:
-      "Sunny made what we expected to be a stressful sale feel completely manageable. His pricing strategy got us three offers above asking within the first week.",
+      "We are extremely grateful to Sunny Chadha for helping us buy our first home. He is very responsive, knowledgeable, and always had our best interests in mind.",
     rating: 5,
   },
   {
     id: "t2",
-    name: "Priya S.",
-    location: "North Vancouver",
+    name: "Tapish Bansal",
+    source: "Google Review",
     quote:
-      "As a first-time buyer I had a hundred questions and Sunny answered every single one, patiently, and never made me feel rushed into a decision.",
+      "I had an exceptional experience working with Sunny Chadha as my realtor. From our initial meeting to closing, Sunny demonstrated professionalism, dedication, and extensive knowledge of the real estate market.",
     rating: 5,
   },
   {
     id: "t3",
-    name: "James T.",
-    location: "Lynn Valley",
+    name: "Haris Jadoon",
+    source: "Google Review",
     quote:
-      "We interviewed three agents before choosing Sunny. His market knowledge of Lynn Valley specifically was on another level compared to the others.",
+      "I had the pleasure of working with Sunny Chadha during my recent property transaction, and I couldn't be more satisfied with the service provided. He was professional, knowledgeable, and extremely responsive to all my needs.",
     rating: 5,
   },
   {
     id: "t4",
-    name: "The Alvarez Family",
-    location: "Deep Cove",
+    name: "Raman Pannu",
+    source: "Google Review",
     quote:
-      "From our first conversation to closing day, communication was fast and honest. Sunny negotiated terms we didn't think were possible in this market.",
+      "This was the first time dealing with Sunny — he is full of knowledge and works for the best interest of his client. Thanks to him we signed a great contract and added a great additional location for our business.",
     rating: 5,
   },
   {
     id: "t5",
-    name: "Grace L.",
-    location: "Central Lonsdale",
+    name: "Amrit Ghotra",
+    source: "Google Review",
     quote:
-      "Sold our condo in 9 days. Sunny's photography and marketing plan made it stand out immediately, and he kept us informed at every step.",
+      "Helped me find the best investment property, below BC assessment value. Highly knowledgeable and always available.",
+    rating: 5,
+  },
+  {
+    id: "t6",
+    name: "Nazmeen Nisha",
+    source: "Google Review",
+    quote:
+      "Found Sunny very hard working and determined to find us our new home. Very patient throughout the process and explained everything in detail and guided us till the end.",
     rating: 5,
   },
 ];

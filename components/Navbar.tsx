@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
@@ -30,10 +31,19 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-navy/10 bg-white/90 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
-        <Link href="/" className="flex flex-col leading-none">
-          <span className="font-serif text-xl text-navy">Sunny Chadha</span>
-          <span className="text-[11px] uppercase tracking-[0.2em] text-accent">
-            Century 21 Coastal Realty
+        <Link href="/" className="flex items-center gap-3">
+          <Image
+            src="/logo.jpeg"
+            alt="Sunny Chadha credential badge"
+            width={44}
+            height={44}
+            className="h-11 w-11 rounded-full object-cover"
+          />
+          <span className="flex flex-col leading-none">
+            <span className="font-serif text-xl text-navy">Sunny Chadha</span>
+            <span className="text-[11px] uppercase tracking-[0.2em] text-accent">
+              Century 21 Coastal Realty
+            </span>
           </span>
         </Link>
 

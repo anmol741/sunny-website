@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Container from "@/components/Container";
 import SectionReveal from "@/components/SectionReveal";
 import CTAButton from "@/components/CTAButton";
@@ -33,10 +34,14 @@ export default function AboutPage() {
         <div className="grid gap-12 lg:grid-cols-3">
           <SectionReveal className="lg:col-span-1">
             <div className="sticky top-24">
-              {/* TODO(CJ): Swap for Sunny's real headshot once provided. */}
-              <div className="flex h-56 w-56 items-center justify-center rounded-2xl bg-gradient-to-br from-navy to-accent font-serif text-6xl text-white">
-                SC
-              </div>
+              <Image
+                src="/profile_img.jpg"
+                alt="Sunny Chadha, REALTOR®"
+                width={224}
+                height={224}
+                className="h-56 w-56 rounded-2xl object-cover"
+                priority
+              />
               <p className="mt-6 font-serif text-2xl text-navy">
                 Sunny Chadha
               </p>

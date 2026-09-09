@@ -1,13 +1,16 @@
+import Image from "next/image";
 import CTAButton from "@/components/CTAButton";
 
-// TODO(CJ): Swap the placeholder monogram below for Sunny's real headshot
-// once photo assets are provided.
 export default function AgentIntroCard() {
   return (
     <div className="flex flex-col items-center gap-8 rounded-2xl border border-navy/10 bg-white p-8 shadow-sm sm:flex-row sm:p-10">
-      <div className="flex h-32 w-32 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-navy to-accent font-serif text-4xl text-white">
-        SC
-      </div>
+      <Image
+        src="/profile_img.jpg"
+        alt="Sunny Chadha, REALTOR®"
+        width={128}
+        height={128}
+        className="h-32 w-32 shrink-0 rounded-full object-cover"
+      />
       <div className="text-center sm:text-left">
         <p className="font-serif text-2xl text-navy">Sunny Chadha</p>
         <p className="mt-1 text-sm font-medium uppercase tracking-wide text-accent">
