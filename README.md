@@ -1,7 +1,8 @@
 # Sunny Chadha — REALTOR® Website
 
 A custom Next.js website for Sunny Chadha, REALTOR® with Century 21 Coastal
-Realty Ltd., serving North and West Vancouver, BC. Built to replace his
+Realty Ltd., serving commercial and residential clients across the Lower
+Mainland and Fraser Valley, BC. Built to replace his
 corporate-template Century 21 profile page with a fast, fully-owned, custom
 site.
 
@@ -43,7 +44,8 @@ Never commit real values for these — `.env*` is gitignored except for
 ## MLS / IDX Data — Important TODO
 
 The `/listings` pages are currently built against **mock data** in
-`data/listings.json` (6 sample North Shore properties). There is no live MLS
+`data/listings.json` (6 sample North Shore properties, not yet updated for the
+Lower Mainland / Fraser Valley repositioning). There is no live MLS
 feed connected.
 
 To go live with real listings, CJ/Anmol need to source one of:

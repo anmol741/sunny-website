@@ -6,7 +6,7 @@ import ListingsExplorer from "@/components/ListingsExplorer";
 export const metadata: Metadata = {
   title: "Listings | Sunny Chadha, REALTOR®",
   description:
-    "Browse current listings in North Vancouver, West Vancouver, and the surrounding North Shore.",
+    "Browse current residential and commercial listings across the Lower Mainland and Fraser Valley.",
 };
 
 // TODO(CJ): This page is built against mock data in /data/listings.json.
@@ -27,8 +27,8 @@ export default function ListingsPage() {
             Find Your Next Home
           </h1>
           <p className="mt-3 max-w-2xl text-navy/60">
-            Search current listings across North Vancouver, West Vancouver,
-            and the surrounding North Shore.
+            Search current residential and commercial listings across the
+            Lower Mainland and Fraser Valley.
           </p>
         </div>
 

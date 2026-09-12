@@ -120,7 +120,7 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-4 lg:flex">
           <a
-            href="tel:+16045551234"
+            href="tel:+16045994888"
             className="text-sm font-medium text-navy/70 hover:text-accent"
           >
             (604) 599-4888

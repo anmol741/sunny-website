@@ -3,11 +3,12 @@ import Image from "next/image";
 import Container from "@/components/Container";
 import SectionReveal from "@/components/SectionReveal";
 import CTAButton from "@/components/CTAButton";
+import { AREA_GROUPS } from "@/data/areas";
 
 export const metadata: Metadata = {
   title: "About Sunny Chadha | REALTOR®",
   description:
-    "Learn about Sunny Chadha, REALTOR® with Century 21 Coastal Realty Ltd., serving North and West Vancouver, BC.",
+    "Learn about Sunny Chadha, REALTOR® with Century 21 Coastal Realty Ltd., serving commercial and residential clients across the Lower Mainland and Fraser Valley, BC.",
 };
 
 const CREDENTIALS = [
@@ -16,16 +17,8 @@ const CREDENTIALS = [
   "Century 21 Coastal Realty Ltd.",
 ];
 
-const SERVICE_AREAS = [
-  "North Vancouver",
-  "West Vancouver",
-  "Lynn Valley",
-  "Deep Cove",
-  "Central Lonsdale",
-  "Lower Lonsdale",
-  "British Properties",
-  "Ambleside & Dundarave",
-];
+// Keep the About page in step with the homepage "Areas We Serve" section.
+const SERVICE_AREAS = AREA_GROUPS.flatMap((group) => group.areas);
 
 export default function AboutPage() {
   return (
@@ -49,7 +42,7 @@ export default function AboutPage() {
                 REALTOR®
               </p>
               <div className="mt-4 space-y-1 text-sm text-navy/60">
-                <a href="tel:+16045551234" className="block hover:text-accent">
+                <a href="tel:+16045994888" className="block hover:text-accent">
                   (604) 599-4888
                 </a>
                 <a
@@ -78,11 +71,11 @@ export default function AboutPage() {
             <SectionReveal delay={0.06} className="space-y-4 text-navy/70">
               <p>
                 Sunny Chadha is a REALTOR® with Century 21 Coastal Realty
-                Ltd., specializing in residential real estate across North
-                and West Vancouver. With a deep knowledge of the North
-                Shore&apos;s distinct neighbourhoods — from the family-friendly
-                streets of Lynn Valley to the waterfront estates of West
-                Vancouver — Sunny brings clients clear, honest guidance
+                Ltd., specializing in residential and commercial real estate
+                across the Lower Mainland and Fraser Valley. With a deep
+                knowledge of the region&apos;s distinct communities — from
+                Surrey and the Tri-Cities to Langley, Abbotsford, and the
+                eastern valley — Sunny brings clients clear, honest guidance
                 through every stage of buying or selling.
               </p>
               <p>
@@ -94,7 +87,7 @@ export default function AboutPage() {
               </p>
               <p>
                 Outside of real estate, Sunny is an active member of the
-                North Shore community and stays closely connected to the
+                communities he serves and stays closely connected to the
                 local market — the schools, transit changes, development
                 projects, and everything else that shapes property values
                 here.

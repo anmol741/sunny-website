@@ -36,7 +36,7 @@ export default function TestimonialsPage() {
           </h1>
           <p className="mt-4 text-lg text-navy/60">
             Real experiences from buyers and sellers Sunny has worked with
-            across the North Shore.
+            across the Lower Mainland and Fraser Valley.
           </p>
         </SectionReveal>
 

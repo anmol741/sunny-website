@@ -7,7 +7,7 @@ import { newsArticles } from "@/data/news";
 export const metadata: Metadata = {
   title: "Neighbourhood News | Sunny Chadha, REALTOR®",
   description:
-    "Local market updates and real estate tips for North and West Vancouver.",
+    "Local market updates and real estate tips for the Lower Mainland and Fraser Valley.",
 };
 
 export default function NewsPage() {
@@ -22,8 +22,8 @@ export default function NewsPage() {
             Local Insight &amp; Market Updates
           </h1>
           <p className="mt-4 text-lg text-navy/60">
-            Timely market reports and practical tips for the North Shore
-            real estate community.
+            Timely market reports and practical tips for the Lower Mainland
+            and Fraser Valley real estate community.
           </p>
         </SectionReveal>
 

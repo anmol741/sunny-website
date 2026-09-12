@@ -4,7 +4,7 @@ import AdvicePageLayout from "@/components/AdvicePageLayout";
 export const metadata: Metadata = {
   title: "Selling Advice | Sunny Chadha, REALTOR®",
   description:
-    "How to prepare, price, and market your North Shore home for the strongest outcome.",
+    "How to prepare, price, and market your home for the strongest outcome.",
 };
 
 export default function SellingAdvicePage() {

@@ -1,5 +1,14 @@
 import type { NewsArticle } from "@/lib/types";
 
+/**
+ * TODO(CJ): These sample articles are still written for the old North Shore
+ * positioning — the Q3 2026 market report cites North/West Vancouver inventory
+ * and benchmark figures, and the first-time-buyer tips reference Lynn Valley,
+ * Central Lonsdale, and Deep Cove. They were deliberately NOT rewritten during
+ * the Lower Mainland / Fraser Valley repositioning, because doing so would mean
+ * inventing market statistics for the new region. Replace them with real Surrey
+ * / Fraser Valley market content (and update the slugs) before launch.
+ */
 export const newsArticles: NewsArticle[] = [
   {
     slug: "north-shore-market-update-q3-2026",

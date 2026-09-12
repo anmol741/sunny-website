@@ -7,7 +7,7 @@ import { newsArticles } from "@/data/news";
 export const metadata: Metadata = {
   title: "Market Reports | Sunny Chadha, REALTOR®",
   description:
-    "Regular updates on North Shore real estate pricing trends and inventory.",
+    "Regular updates on Lower Mainland and Fraser Valley real estate pricing trends and inventory.",
 };
 
 export default function MarketReportsPage() {
@@ -17,7 +17,7 @@ export default function MarketReportsPage() {
     <AdvicePageLayout
       eyebrow="Get Advice"
       title="Market Reports"
-      intro="Regular, plain-language updates on pricing trends, inventory, and what they mean for buyers and sellers on the North Shore."
+      intro="Regular, plain-language updates on pricing trends, inventory, and what they mean for buyers and sellers across the Lower Mainland and Fraser Valley."
       ctaText="Want a report tailored to your street?"
     >
       <div className="grid gap-6 sm:grid-cols-2">

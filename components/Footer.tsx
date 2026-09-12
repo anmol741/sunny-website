@@ -20,7 +20,7 @@ export default function Footer() {
           <p className="mt-4 text-sm text-white/60">
             Century 21 Coastal Realty Ltd.
             <br />
-            North &amp; West Vancouver, BC
+            #105 7928 128 St, Surrey, BC V3W 4E8
           </p>
         </div>
 
@@ -86,7 +86,7 @@ export default function Footer() {
           </p>
           <ul className="mt-4 space-y-2 text-sm text-white/70">
             <li>
-              <a href="tel:+16045551234" className="hover:text-gold">
+              <a href="tel:+16045994888" className="hover:text-gold">
                 (604) 599-4888
               </a>
             </li>
@@ -105,8 +105,9 @@ export default function Footer() {
       <div className="border-t border-white/10 py-6">
         <div className="mx-auto flex max-w-7xl flex-col items-center gap-2 px-6 text-center text-xs text-white/40 lg:px-10">
           <p>
-            &copy; {new Date().getFullYear()} Sunny Chadha, REALTOR®. Not
-            intended to solicit properties currently listed for sale.
+            &copy; {new Date().getFullYear()} Sunny Chadha, REALTOR®. This
+            communication is not intended to cause or induce the breach of an
+            existing agency relationship.
           </p>
           <p className="flex items-center justify-center gap-2">
             {/* TODO(CJ): confirm full disclosure block here per board requirements. */}

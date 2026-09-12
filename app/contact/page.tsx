@@ -6,7 +6,7 @@ import LeadForm from "@/components/LeadForm";
 export const metadata: Metadata = {
   title: "Contact | Sunny Chadha, REALTOR®",
   description:
-    "Get in touch with Sunny Chadha, REALTOR® with Century 21 Coastal Realty Ltd., serving North and West Vancouver, BC.",
+    "Get in touch with Sunny Chadha, REALTOR® with Century 21 Coastal Realty Ltd., serving the Lower Mainland and Fraser Valley, BC.",
 };
 
 export default function ContactPage() {
@@ -29,7 +29,7 @@ export default function ContactPage() {
             <div className="mt-8 space-y-4 text-sm">
               <div>
                 <p className="font-semibold text-navy">Phone</p>
-                <a href="tel:+16045551234" className="text-navy/60 hover:text-accent">
+                <a href="tel:+16045994888" className="text-navy/60 hover:text-accent">
                   (604) 599-4888
                 </a>
               </div>
@@ -45,7 +45,9 @@ export default function ContactPage() {
               <div>
                 <p className="font-semibold text-navy">Brokerage</p>
                 <p className="text-navy/60">Century 21 Coastal Realty Ltd.</p>
-                <p className="text-navy/60">North &amp; West Vancouver, BC</p>
+                <p className="text-navy/60">
+                  #105 7928 128 St, Surrey, BC V3W 4E8
+                </p>
               </div>
             </div>
           </SectionReveal>

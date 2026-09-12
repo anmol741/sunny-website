@@ -4,7 +4,7 @@ import AdvicePageLayout from "@/components/AdvicePageLayout";
 export const metadata: Metadata = {
   title: "Buying Advice | Sunny Chadha, REALTOR®",
   description:
-    "A step-by-step look at the home buying process on the North Shore.",
+    "A step-by-step look at the home buying process in the Lower Mainland and Fraser Valley.",
 };
 
 export default function BuyingAdvicePage() {

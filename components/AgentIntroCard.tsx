@@ -17,11 +17,11 @@ export default function AgentIntroCard() {
           REALTOR®
         </p>
         <p className="mt-3 max-w-md text-sm text-navy/60">
-          Century 21 Coastal Realty Ltd. — serving North Vancouver, West
-          Vancouver, and the surrounding Lower Mainland.
+          Century 21 Coastal Realty Ltd. — serving Surrey, Langley, Vancouver,
+          the Tri-Cities, and the surrounding Lower Mainland.
         </p>
         <div className="mt-4 flex flex-col gap-1 text-sm text-navy/70 sm:flex-row sm:gap-6">
-          <a href="tel:+16045551234" className="hover:text-accent">
+          <a href="tel:+16045994888" className="hover:text-accent">
             (604) 599-4888
           </a>
           <a

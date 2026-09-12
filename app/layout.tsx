@@ -24,9 +24,9 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Sunny Chadha | REALTOR® — North & West Vancouver",
+  title: "Sunny Chadha | REALTOR® — Lower Mainland & Fraser Valley",
   description:
-    "Sunny Chadha is a REALTOR® with Century 21 Coastal Realty Ltd., helping buyers and sellers across North and West Vancouver, BC.",
+    "Sunny Chadha is a REALTOR® with Century 21 Coastal Realty Ltd., serving commercial and residential buyers and sellers across the Lower Mainland and Fraser Valley, BC.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

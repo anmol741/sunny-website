@@ -13,6 +13,18 @@ type Props = {
 
 type Status = "idle" | "submitting" | "success" | "error";
 
+const INTEREST_OPTIONS = [
+  "Buying",
+  "Selling",
+  "Commercial",
+  "Just Looking",
+] as const;
+
+const LABEL = "mb-1 block text-sm font-medium text-navy";
+
+const FIELD =
+  "w-full rounded-md border border-navy/15 bg-white px-3 py-2 text-navy outline-none transition focus:border-accent focus:ring-1 focus:ring-accent";
+
 export default function LeadForm({
   formType,
   listingAddress,
@@ -75,46 +87,68 @@ export default function LeadForm({
 
       <div className={compact ? "space-y-4" : "grid gap-4 sm:grid-cols-2"}>
         <div>
-          <label htmlFor="name" className="mb-1 block text-sm font-medium text-navy">
-            Full name
+          <label htmlFor="name" className={LABEL}>
+            Full name <span className="text-accent">*</span>
           </label>
           <input
             id="name"
             name="name"
             type="text"
+            autoComplete="name"
             required
-            className="w-full rounded-md border border-navy/15 bg-white px-3 py-2 text-navy outline-none transition focus:border-accent focus:ring-1 focus:ring-accent"
+            className={FIELD}
           />
         </div>
         <div>
-          <label htmlFor="phone" className="mb-1 block text-sm font-medium text-navy">
+          <label htmlFor="email" className={LABEL}>
+            Email <span className="text-accent">*</span>
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            required
+            className={FIELD}
+          />
+        </div>
+      </div>
+
+      <div className={compact ? "space-y-4" : "grid gap-4 sm:grid-cols-2"}>
+        <div>
+          <label htmlFor="phone" className={LABEL}>
             Phone
           </label>
           <input
             id="phone"
             name="phone"
             type="tel"
-            required
-            className="w-full rounded-md border border-navy/15 bg-white px-3 py-2 text-navy outline-none transition focus:border-accent focus:ring-1 focus:ring-accent"
+            autoComplete="tel"
+            className={FIELD}
           />
+        </div>
+        <div>
+          <label htmlFor="interestedIn" className={LABEL}>
+            Interested in
+          </label>
+          <select
+            id="interestedIn"
+            name="interestedIn"
+            defaultValue={formType === "showing" ? "Buying" : ""}
+            className={FIELD}
+          >
+            <option value="">Select one…</option>
+            {INTEREST_OPTIONS.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
 
       <div>
-        <label htmlFor="email" className="mb-1 block text-sm font-medium text-navy">
-          Email
-        </label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          required
-          className="w-full rounded-md border border-navy/15 bg-white px-3 py-2 text-navy outline-none transition focus:border-accent focus:ring-1 focus:ring-accent"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="message" className="mb-1 block text-sm font-medium text-navy">
+        <label htmlFor="message" className={LABEL}>
           Message
         </label>
         <textarea
@@ -126,7 +160,7 @@ export default function LeadForm({
               ? `I'd like to request a showing for ${listingAddress}.`
               : ""
           }
-          className="w-full resize-none rounded-md border border-navy/15 bg-white px-3 py-2 text-navy outline-none transition focus:border-accent focus:ring-1 focus:ring-accent"
+          className={`${FIELD} resize-none`}
         />
       </div>
 
@@ -139,9 +173,9 @@ export default function LeadForm({
           className="mt-0.5 h-4 w-4 shrink-0 rounded border-navy/30 text-accent focus:ring-accent"
         />
         <span>
-          I agree to be contacted by Century 21 Canada and Sunny Chadha via
-          call, email, and text for real estate services. To opt out, you can
-          reply &quot;stop&quot; at any time or reply &quot;help&quot; for
+          I consent to be contacted by Sunny Chadha regarding my real estate
+          inquiry, by call, email, and text. To opt out, you can reply
+          &quot;stop&quot; at any time or reply &quot;help&quot; for
           assistance. You can also click the unsubscribe link in the emails.
           Message and data rates may apply. Message frequency may vary.{" "}
           <Link

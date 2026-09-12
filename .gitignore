@@ -40,3 +40,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# captured leads (local Excel/CSV fallback, see LEAD_CSV_PATH)
+leads*.csv

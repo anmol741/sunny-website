@@ -59,18 +59,18 @@ export default function Hero() {
             variants={item}
             className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-gold"
           >
-            North &amp; West Vancouver, BC
+            Lower Mainland &amp; Fraser Valley, BC
           </motion.p>
           <motion.h1
             variants={item}
             className="font-serif text-4xl leading-tight text-white sm:text-5xl lg:text-6xl"
           >
-            Find your place on the North Shore
+            Commercial and Residential Realtor
           </motion.h1>
           <motion.p variants={item} className="mt-5 max-w-xl text-lg text-white/70">
-            Sunny Chadha helps buyers and sellers navigate the North and West
-            Vancouver real estate market with clear advice and hands-on
-            guidance, from first search to closing day.
+            Sunny Chadha helps buyers, sellers, and investors navigate
+            residential and commercial real estate across the Lower Mainland
+            and Fraser Valley &mdash; from first search to closing day.
           </motion.p>
           <motion.div variants={item} className="mt-9">
             <SearchBar dark />

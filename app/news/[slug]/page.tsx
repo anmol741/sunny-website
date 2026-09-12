@@ -65,7 +65,7 @@ export default async function NewsArticlePage(
         <SectionReveal delay={0.14}>
           <div className="mt-14 rounded-2xl bg-navy p-8 text-center text-white">
             <p className="font-serif text-2xl">
-              Have questions about the North Shore market?
+              Have questions about your local market?
             </p>
             <div className="mt-6">
               <CTAButton href="/contact">Talk to Sunny</CTAButton>

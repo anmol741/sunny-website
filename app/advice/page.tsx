@@ -6,7 +6,7 @@ import SectionReveal from "@/components/SectionReveal";
 export const metadata: Metadata = {
   title: "Get Advice | Sunny Chadha, REALTOR®",
   description:
-    "Buying, selling, financing, and market report resources for North Shore real estate.",
+    "Buying, selling, financing, and market report resources for Lower Mainland and Fraser Valley real estate.",
 };
 
 const TOPICS = [
@@ -32,7 +32,7 @@ const TOPICS = [
     href: "/advice/market-reports",
     title: "Market Reports",
     description:
-      "Regular updates on North Shore pricing trends, inventory, and what they mean for you.",
+      "Regular updates on Lower Mainland and Fraser Valley pricing trends, inventory, and what they mean for you.",
   },
 ];
 
@@ -46,8 +46,9 @@ export default function AdviceIndexPage() {
           </p>
           <h1 className="mt-2 font-serif text-4xl text-navy">Get Advice</h1>
           <p className="mt-4 text-lg text-navy/60">
-            Straightforward guidance on buying, selling, and financing a home
-            on the North Shore — no jargon, no pressure.
+            Straightforward guidance on buying, selling, and financing
+            residential and commercial property across the Lower Mainland and
+            Fraser Valley — no jargon, no pressure.
           </p>
         </SectionReveal>
 
