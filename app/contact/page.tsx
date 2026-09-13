@@ -26,6 +26,8 @@ export default function ContactPage() {
               list this month, I&apos;d love to hear from you.
             </p>
 
+            
+
             <div className="mt-8 space-y-4 text-sm">
               <div>
                 <p className="font-semibold text-navy">Phone</p>
