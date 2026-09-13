@@ -2,6 +2,7 @@
 
 import { motion, type Variants } from "framer-motion";
 import SearchBar from "@/components/SearchBar";
+import { AgentProfile, AgentDetails } from "@/components/AgentIntroCard";
 
 const container: Variants = {
   hidden: {},
@@ -53,27 +54,39 @@ export default function Hero() {
           variants={container}
           initial="hidden"
           animate="show"
-          className="max-w-2xl"
+          className="hero-grid grid gap-y-8 lg:gap-x-16 lg:gap-y-10"
         >
           <motion.p
             variants={item}
-            className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-gold"
+            style={{ gridArea: "kicker" }}
+            className="text-xs font-semibold uppercase tracking-[0.3em] text-gold"
           >
             Lower Mainland &amp; Fraser Valley, BC
           </motion.p>
           <motion.h1
             variants={item}
-            className="font-serif text-4xl leading-tight text-white sm:text-5xl lg:text-6xl"
+            style={{ gridArea: "headline" }}
+            className="max-w-xl font-serif text-4xl leading-tight text-white sm:text-5xl lg:text-6xl"
           >
             Commercial and Residential Realtor
           </motion.h1>
-          <motion.p variants={item} className="mt-5 max-w-xl text-lg text-white/70">
+          <motion.p
+            variants={item}
+            style={{ gridArea: "paragraph" }}
+            className="max-w-xl text-lg text-white/70"
+          >
             Sunny Chadha helps buyers, sellers, and investors navigate
             residential and commercial real estate across the Lower Mainland
             and Fraser Valley &mdash; from first search to closing day.
           </motion.p>
-          <motion.div variants={item} className="mt-9">
+          <motion.div variants={item} style={{ gridArea: "search" }}>
             <SearchBar dark />
+          </motion.div>
+          <motion.div variants={item} style={{ gridArea: "profile" }}>
+            <AgentProfile />
+          </motion.div>
+          <motion.div variants={item} style={{ gridArea: "details" }}>
+            <AgentDetails />
           </motion.div>
         </motion.div>
       </div>

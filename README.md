@@ -35,7 +35,9 @@ available:
 
 | Variable | Purpose | Status |
 | --- | --- | --- |
-| `FOLLOW_UP_BOSS_API_KEY` | Forwards lead form submissions to Sunny's Follow Up Boss CRM from `app/api/lead/route.ts`. | **Placeholder — not yet wired up.** The route currently logs submissions server-side only. See the TODO comments in that file for the exact Follow Up Boss Events API call to add once the key is available. |
+| `FUB_API_KEY` | Sends lead form submissions to Sunny's Follow Up Boss CRM via the Events API, from `app/api/lead/route.ts`. Runs alongside Google Sheets, not as a fallback for it. | Required for Follow Up Boss delivery — get it from Follow Up Boss > Admin > API. |
+| `GOOGLE_SHEETS_CLIENT_EMAIL` / `GOOGLE_SHEETS_PRIVATE_KEY` / `GOOGLE_SHEET_ID` | Appends each lead as a row to a Google Sheet via a service account, from `app/api/lead/route.ts`. Runs alongside Follow Up Boss. | Required for the Sheets channel — the service account's client email must be shared on the sheet with Editor access. |
+| `LEAD_CSV_PATH` | Local-only CSV fallback for lead capture (`app/api/lead/route.ts`), used only if neither Follow Up Boss nor Google Sheets is configured or both fail. | Optional, local/dev only — Netlify's filesystem is ephemeral. |
 | `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` | Enables the embedded map on listing detail pages (`components/MapEmbed.tsx`). | Optional — without it, the map section renders a graceful placeholder instead of an iframe. |
 
 Never commit real values for these — `.env*` is gitignored except for

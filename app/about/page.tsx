@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 const CREDENTIALS = [
   "Licensed REALTOR® in British Columbia",
-  "Member, Real Estate Board of Greater Vancouver",
+  "Fraser Valley Real Estate Board",
   "Century 21 Coastal Realty Ltd.",
 ];
 

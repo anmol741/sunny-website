@@ -1,9 +1,9 @@
 import Image from "next/image";
 import CTAButton from "@/components/CTAButton";
 
-export default function AgentIntroCard() {
+export function AgentProfile() {
   return (
-    <div className="flex flex-col items-center gap-8 rounded-2xl border border-navy/10 bg-white p-8 shadow-sm sm:flex-row sm:p-10">
+    <div className="flex flex-col items-center gap-6 rounded-2xl bg-white/95 p-8 shadow-xl sm:flex-row sm:gap-8">
       <Image
         src="/profile_img.jpg"
         alt="Sunny Chadha, REALTOR®"
@@ -16,26 +16,33 @@ export default function AgentIntroCard() {
         <p className="mt-1 text-sm font-medium uppercase tracking-wide text-accent">
           REALTOR®
         </p>
-        <p className="mt-3 max-w-md text-sm text-navy/60">
-          Century 21 Coastal Realty Ltd. — serving Surrey, Langley, Vancouver,
-          the Tri-Cities, and the surrounding Lower Mainland.
-        </p>
-        <div className="mt-4 flex flex-col gap-1 text-sm text-navy/70 sm:flex-row sm:gap-6">
-          <a href="tel:+16045994888" className="hover:text-accent">
-            (604) 599-4888
-          </a>
-          <a
-            href="mailto:sunny.chadha@century21.ca"
-            className="hover:text-accent"
-          >
-            sunny.chadha@century21.ca
-          </a>
-        </div>
-        <div className="mt-6">
-          <CTAButton href="/about" variant="ghost">
-            Meet Sunny
-          </CTAButton>
-        </div>
+      </div>
+    </div>
+  );
+}
+
+export function AgentDetails() {
+  return (
+    <div className="rounded-2xl bg-white/95 p-8 text-center shadow-xl sm:text-left">
+      <p className="mx-auto max-w-md text-sm text-navy/60 sm:mx-0">
+        Century 21 Coastal Realty Ltd. — serving Surrey, Langley, Vancouver,
+        the Tri-Cities, and the surrounding Lower Mainland.
+      </p>
+      <div className="mt-4 flex flex-col gap-1 text-sm text-navy/70 sm:flex-row sm:gap-6">
+        <a href="tel:+16045994888" className="hover:text-accent">
+          (604) 599-4888
+        </a>
+        <a
+          href="mailto:sunny.chadha@century21.ca"
+          className="hover:text-accent"
+        >
+          sunny.chadha@century21.ca
+        </a>
+      </div>
+      <div className="mt-6">
+        <CTAButton href="/about" variant="ghost">
+          Meet Sunny
+        </CTAButton>
       </div>
     </div>
   );

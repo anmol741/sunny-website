@@ -38,3 +38,26 @@ html {
   background: var(--color-gold);
   color: var(--color-navy);
 }
+
+.hero-grid {
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "profile"
+    "kicker"
+    "headline"
+    "paragraph"
+    "search"
+    "details";
+}
+
+@media (min-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: start;
+    grid-template-areas:
+      "kicker profile"
+      "headline profile"
+      "paragraph details"
+      "search details";
+  }
+}

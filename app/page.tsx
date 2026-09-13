@@ -1,7 +1,6 @@
 import Hero from "@/components/Hero";
 import Container from "@/components/Container";
 import SectionReveal from "@/components/SectionReveal";
-import AgentIntroCard from "@/components/AgentIntroCard";
 import PropertyCard from "@/components/PropertyCard";
 import TestimonialCard from "@/components/TestimonialCard";
 import NewsCard from "@/components/NewsCard";
@@ -16,14 +15,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-
-      <section className="py-20">
-        <Container>
-          <SectionReveal>
-            <AgentIntroCard />
-          </SectionReveal>
-        </Container>
-      </section>
 
       <section className="bg-neutral py-20">
         <Container>

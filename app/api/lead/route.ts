@@ -4,24 +4,14 @@ import { google } from "googleapis";
 /**
  * Lead intake endpoint for the contact / showing-request forms.
  *
- * Delivery is attempted in this order, first configured channel wins:
- *   1. Follow Up Boss   — POST the lead to `FUB_WEBHOOK_URL`
- *   2. Google Sheets    — append a row, via a service account (interim CRM until FUB is ready)
- *   3. CSV / Excel      — append a row to `LEAD_CSV_PATH` (local/dev only)
+ * Delivery channels:
+ *   1. Follow Up Boss   — POST to the Events API, via `FUB_API_KEY` (runs
+ *                          alongside Google Sheets, not as a fallback for it)
+ *   2. Google Sheets    — append a row, via a service account
+ *   3. CSV / Excel      — append a row to `LEAD_CSV_PATH` (local/dev only,
+ *                          used only if neither of the above is configured
+ *                          or both fail)
  *   4. Server log       — last resort, so a submission is never dropped silently
- *
- * TODO(CJ): **Sunny's Follow Up Boss credentials are still outstanding.** Until
- * CJ supplies them nothing reaches the CRM. Two options:
- *
- *   - Easiest: create an inbound webhook / Zapier-style "Lead Source" URL in
- *     Follow Up Boss and set `FUB_WEBHOOK_URL` in Netlify. No code change needed.
- *   - Direct API: get the FUB API key (FUB > Admin > API), set
- *     `FOLLOW_UP_BOSS_API_KEY`, and switch `forwardToFollowUpBoss()` over to the
- *     Events API (https://docs.followupboss.com/reference/events-create), which
- *     needs Basic auth: `Buffer.from(`${key}:`).toString("base64")`.
- *
- * Do NOT hardcode a key or invent a working FUB integration — env vars only,
- * and never commit the values.
  *
  * TODO(CJ): Also confirm the retention/consent wording in the form matches what
  * Sunny's brokerage requires under PIPEDA/CASL before launch.
@@ -83,42 +73,45 @@ function parseLead(body: unknown): Lead | null {
   };
 }
 
-/** 1. Follow Up Boss inbound webhook. */
-async function forwardToFollowUpBoss(lead: Lead): Promise<boolean> {
-  const webhookUrl = process.env.FUB_WEBHOOK_URL;
-  if (!webhookUrl) return false;
+/** 1. Follow Up Boss — Events API (https://docs.followupboss.com/reference/events-create). */
+async function sendLeadToFollowUpBoss(lead: Lead): Promise<boolean> {
+  const apiKey = process.env.FUB_API_KEY;
+  if (!apiKey) return false;
 
-  const res = await fetch(webhookUrl, {
+  const [firstName, ...rest] = lead.name.split(/\s+/);
+  const lastName = rest.join(" ");
+
+  const res = await fetch("https://api.followupboss.com/v1/events", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Basic ${Buffer.from(`${apiKey}:`).toString("base64")}`,
+    },
     body: JSON.stringify({
-      source: "sunnychadha.com",
-      type:
-        lead.formType === "showing" ? "Property Inquiry" : "General Inquiry",
+      source: "Sunny Chadha Website",
+      system: "Sunny Chadha Website",
+      type: "General Inquiry",
+      message: lead.message,
       person: {
-        firstName: lead.name,
+        firstName,
+        lastName,
         emails: [{ value: lead.email }],
         ...(lead.phone ? { phones: [{ value: lead.phone }] } : {}),
       },
-      interestedIn: lead.interestedIn,
-      message: lead.message,
-      property: lead.listingAddress
-        ? { street: lead.listingAddress, mlsNumber: lead.listingMls }
-        : undefined,
-      receivedAt: lead.receivedAt,
     }),
   });
 
   if (!res.ok) {
     throw new Error(
-      `Follow Up Boss webhook returned ${res.status} ${res.statusText}`,
+      `Follow Up Boss Events API returned ${res.status} ${res.statusText}`,
     );
   }
   return true;
 }
 
 /**
- * 2. Google Sheets — interim CRM until Sunny's FUB webhook URL is issued.
+ * 2. Google Sheets — runs alongside Follow Up Boss as a second record of
+ * every lead.
  *
  * Appends one row per lead to the sheet at `GOOGLE_SHEET_ID`, columns:
  * Timestamp | Name | Email | Phone | Interested In | Message. Auth is a
@@ -207,38 +200,54 @@ async function appendLeadToCsv(lead: Lead): Promise<boolean> {
   return true;
 }
 
+/** Delivers via one channel, logging success/failure the same way for all channels. */
+async function deliverToChannel(
+  channel: string,
+  deliver: (lead: Lead) => Promise<boolean>,
+  lead: Lead,
+): Promise<boolean> {
+  try {
+    const delivered = await deliver(lead);
+    if (delivered) {
+      console.log(`[lead] delivered via ${channel}:`, lead.email);
+    }
+    return delivered;
+  } catch (error) {
+    // A configured channel failed. Log it — other channels still run, so a
+    // CRM outage can't cost Sunny a lead.
+    console.error(`[lead] ${channel} delivery failed:`, error);
+    return false;
+  }
+}
+
 /**
- * Single entry point for delivering a parsed lead. Tries each configured
- * channel in order and returns the name of whichever one accepted it (or
- * "log" if none are configured). Adding Follow Up Boss for real is then just
- * setting `FUB_WEBHOOK_URL` in Netlify — this function and its channel list
- * don't need to change.
+ * Single entry point for delivering a parsed lead. Follow Up Boss and Google
+ * Sheets run alongside each other (one failing doesn't skip or block the
+ * other, or the visitor's success message); CSV and the server log are a
+ * last-resort fallback used only if neither of those delivered.
  */
 async function sendLead(lead: Lead): Promise<string> {
-  const channels: Array<[string, (lead: Lead) => Promise<boolean>]> = [
-    ["follow-up-boss", forwardToFollowUpBoss],
-    ["google-sheets", appendLeadToGoogleSheet],
-    ["csv", appendLeadToCsv],
-  ];
+  const [fubDelivered, sheetsDelivered] = await Promise.all([
+    deliverToChannel("follow-up-boss", sendLeadToFollowUpBoss, lead),
+    deliverToChannel("google-sheets", appendLeadToGoogleSheet, lead),
+  ]);
 
-  for (const [channel, deliver] of channels) {
-    try {
-      if (await deliver(lead)) {
-        console.log(`[lead] delivered via ${channel}:`, lead.email);
-        return channel;
-      }
-    } catch (error) {
-      // A configured channel failed. Log it and fall through to the next one so
-      // a CRM outage can't cost Sunny a lead.
-      console.error(`[lead] ${channel} delivery failed:`, error);
-    }
+  const delivered = [
+    fubDelivered && "follow-up-boss",
+    sheetsDelivered && "google-sheets",
+  ].filter((channel): channel is string => Boolean(channel));
+
+  if (delivered.length > 0) return delivered.join("+");
+
+  if (await deliverToChannel("csv", appendLeadToCsv, lead)) {
+    return "csv";
   }
 
   // Nothing configured (or everything failed). Log the full lead so it can be
   // recovered from the Netlify function logs, and still report success to the
   // visitor rather than telling them to try again.
   console.warn(
-    "[lead] NOT DELIVERED — no lead channel is configured. Set FUB_WEBHOOK_URL " +
+    "[lead] NOT DELIVERED — no lead channel is configured. Set FUB_API_KEY " +
       "or GOOGLE_SHEETS_CLIENT_EMAIL/GOOGLE_SHEETS_PRIVATE_KEY/GOOGLE_SHEET_ID in " +
       "the Netlify environment. Lead payload:",
     lead,
