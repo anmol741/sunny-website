@@ -34,10 +34,11 @@ export default function LeadForm({
 }: Props) {
   const [status, setStatus] = useState<Status>("idle");
   const [consent, setConsent] = useState(false);
+  const consentRequired = formType !== "contact";
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!consent) return;
+    if (consentRequired && !consent) return;
 
     setStatus("submitting");
     const form = e.currentTarget;
@@ -167,7 +168,7 @@ export default function LeadForm({
       <label className="flex items-start gap-2.5 text-xs leading-relaxed text-navy/70">
         <input
           type="checkbox"
-          required
+          required={consentRequired}
           checked={consent}
           onChange={(e) => setConsent(e.target.checked)}
           className="mt-0.5 h-4 w-4 shrink-0 rounded border-navy/30 text-accent focus:ring-accent"
@@ -197,7 +198,7 @@ export default function LeadForm({
 
       <button
         type="submit"
-        disabled={status === "submitting" || !consent}
+        disabled={status === "submitting" || (consentRequired && !consent)}
         className="w-full rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-light disabled:cursor-not-allowed disabled:opacity-50"
       >
         {status === "submitting"

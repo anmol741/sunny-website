@@ -118,6 +118,56 @@ export default function TermsAndConditionsPage() {
           </div>
 
           <div>
+            <h2 className="font-serif text-xl text-navy">
+              SMS/Text Messaging Terms
+            </h2>
+            <ol className="mt-2 list-decimal space-y-2 pl-5">
+              <li>
+                We use SMS to confirm appointments, send reminders, and
+                notify clients of schedule updates or important changes.
+              </li>
+              <li>
+                You can cancel the SMS service at any time. Just text
+                &quot;STOP&quot;. After you send the SMS message
+                &quot;STOP&quot; to us, we will send you an SMS message to
+                confirm that you have been unsubscribed. After this, you
+                will no longer receive SMS messages from us. If you want to
+                join again, just sign up as you did the first time, and we
+                will start sending SMS messages to you again.
+              </li>
+              <li>
+                If you are experiencing issues with the messaging program,
+                you can reply with the keyword &quot;HELP&quot; for more
+                assistance, or you can get help directly at{" "}
+                <a
+                  href="mailto:sunny.chadha@century21.ca"
+                  className="text-accent underline underline-offset-2"
+                >
+                  sunny.chadha@century21.ca
+                </a>
+                .
+              </li>
+              <li>Carriers are not liable for delayed or undelivered messages.</li>
+              <li>
+                As always, message and data rates may apply for any messages
+                sent to you from us and to us from you. Message frequency
+                may vary. If you have any questions about your text plan or
+                data plan, it is best to contact your wireless provider.
+              </li>
+              <li>
+                If you have any questions regarding privacy, please read our
+                privacy policy:{" "}
+                <a
+                  href="https://sunnychadha.com/privacy-policy"
+                  className="text-accent underline underline-offset-2"
+                >
+                  https://sunnychadha.com/privacy-policy
+                </a>
+              </li>
+            </ol>
+          </div>
+
+          <div>
             <h2 className="font-serif text-xl text-navy">Governing Law</h2>
             <p className="mt-2">
               These Terms are governed by the laws of British Columbia and
