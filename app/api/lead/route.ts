@@ -35,6 +35,7 @@ type Lead = {
   formType: string;
   listingAddress?: string;
   listingMls?: string;
+  consent: boolean;
   receivedAt: string;
 };
 
@@ -52,8 +53,8 @@ function parseLead(body: unknown): Lead | null {
   const name = asTrimmedString(raw.name);
   const email = asTrimmedString(raw.email);
 
-  // Name, email, and consent are the only hard requirements — phone is optional.
-  if (!name || !email || raw.consent !== true) return null;
+  // Name and email are the only hard requirements — consent is opt-in, phone is optional.
+  if (!name || !email) return null;
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return null;
 
   const interest = asTrimmedString(raw.interestedIn);
@@ -69,6 +70,7 @@ function parseLead(body: unknown): Lead | null {
     formType: asTrimmedString(raw.formType) ?? "contact",
     listingAddress: asTrimmedString(raw.listingAddress),
     listingMls: asTrimmedString(raw.listingMls),
+    consent: raw.consent === true,
     receivedAt: new Date().toISOString(),
   };
 }
@@ -91,7 +93,9 @@ async function sendLeadToFollowUpBoss(lead: Lead): Promise<boolean> {
       source: "Sunny Chadha Website",
       system: "Sunny Chadha Website",
       type: "General Inquiry",
-      message: lead.message,
+      message: `${lead.message ?? ""}${
+        lead.message ? "\n\n" : ""
+      }SMS consent: ${lead.consent ? "yes" : "no"}`,
       person: {
         firstName,
         lastName,
@@ -191,10 +195,13 @@ async function appendLeadToCsv(lead: Lead): Promise<boolean> {
     needsHeader = true;
   }
 
-  const row = columns.map((column) => escape(lead[column])).join(",");
+  const row = [
+    ...columns.map((column) => escape(lead[column])),
+    escape(String(lead.consent)),
+  ].join(",");
   await appendFile(
     csvPath,
-    `${needsHeader ? `${columns.join(",")}\n` : ""}${row}\n`,
+    `${needsHeader ? `${[...columns, "consent"].join(",")}\n` : ""}${row}\n`,
     "utf8",
   );
   return true;
@@ -266,7 +273,7 @@ export async function POST(request: Request) {
   const lead = parseLead(body);
   if (!lead) {
     return NextResponse.json(
-      { error: "Name, a valid email, and consent are required." },
+      { error: "Name and a valid email are required." },
       { status: 400 },
     );
   }
